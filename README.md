@@ -179,7 +179,7 @@ Krippendorff's alpha (α) measures inter-annotator agreement on the dominant nar
 
 The Figure below shows where two annotators selected the same narrative (diagonal) and where their labels differed (off-diagonal). The heatmap includes the **Other** category used during annotation; this category is excluded from the final PolyEvidence dataset.
 
-![Document-level dominant narrative annotation agreement matrix](figures/dominant_narrative_agreement_heatmap.png)
+![Document-level dominant narrative annotation agreement matrix](figures/heatmap_iaa_narrative.png)
 
 *Figure. Agreement matrix for document-level dominant narrative annotations.*
 
@@ -189,7 +189,7 @@ Outside the frequent **Other** category, the clearest agreements concern **Discr
 
 Evidence agreement is calculated **only for article pairs for which annotators chose the same dominant narrative**, since a different narrative could legitimately motivate different evidence. Span agreement is measured by precision, recall, and F1 under character-overlap thresholds from **0.5 (partial overlap)** through **1.0 (exact match)**.
 
-![Evidence-span annotation agreement across overlap thresholds](figures/evidence_span_agreement.png)
+![Evidence-span annotation agreement across overlap thresholds](figures/partial_matchIAA_new.png)
 
 *Figure. F1 agreement of evidence spans by language and topic across overlap thresholds.*
 
