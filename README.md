@@ -4,7 +4,7 @@
 
 PolyEvidence is a multilingual, multi-domain dataset and benchmark for identifying the **dominant narrative of a news article** and extracting the **text spans that support that narrative**. It extends [PolyNarrative](https://aclanthology.org/2025.acl-long.1513/) with document-level dominant narrative labels and fine-grained evidence annotations, supporting research on explainable narrative analysis, multilingual NLP, and the study of polarized information environments.
 
-**Paper:** Link to be added (ARR manuscript).  
+**Paper:** Link to be added 
 **Dataset:** Available upon request (see [Dataset access](#dataset-access)).  
 **Contact:** [nuno.r.guimaraes@inesctec.pt](mailto:nuno.r.guimaraes@inesctec.pt)
 
@@ -30,7 +30,7 @@ PolyNarrative provides paragraph-level narrative annotations for multilingual ne
 1. **Document-level dominant narrative:** the narrative that best captures the article's overall framing, viewpoint, or intended interpretation. This is not necessarily the most frequent paragraph-level narrative.
 2. **Narrative-supporting evidence:** the textual spans that justify the assignment of the dominant narrative to the article.
 
-The evidence spans explain **how a narrative is conveyed in the article**; they do **not** establish that the underlying claims are factually true.
+The evidence spans explain **how a narrative is conveyed in the article**. However, they do **not** establish that the underlying claims are factually true.
 
 ## Dataset
 
@@ -68,7 +68,7 @@ The split was stratified by language and, where possible, by dominant narrative.
 
 > **The PolyEvidence dataset is available upon request.** It contains news articles originating from third-party sources that are subject to **intellectual property and copyright restrictions**. For this reason, the complete dataset, including the article text, is **not made available as a public download**.
 
-Researchers interested in accessing the dataset should contact **[nuno.r.guimaraes@inesctec.pt](mailto:nuno.r.guimaraes@inesctec.pt)**, preferably indicating their affiliation and intended research use. Requests will be considered in light of the applicable rights and sharing conditions. Access to the dataset does not grant permission to republish or redistribute third-party news content.
+Researchers interested in accessing the dataset should contact **[nuno.r.guimaraes@inesctec.pt](mailto:nuno.r.guimaraes@inesctec.pt)**, preferably indicating their affiliation and intended research use. Access to the dataset does not grant permission to republish or redistribute third-party news content.
 
 ## Benchmark tasks
 
@@ -112,7 +112,7 @@ These results are intended as initial benchmarks. Identifying exact narrative-su
 
 ## Online appendix
 
-This section reproduces the supplementary material provided in the paper's **ARR appendix (A–E)**, including the complete domain-specific taxonomies, expanded annotation-agreement analysis, generative model prompts, fine-tuning settings, and the detailed results for both benchmark tasks. Figures are referenced from the local [`figures/`](figures/) directory. The documentation assets included with this README use the following structure:
+This section reproduces the supplementary material, including the complete domain-specific taxonomies, expanded annotation-agreement analysis, generative model prompts, fine-tuning settings, and the detailed results for both benchmark tasks. Figures are referenced from the local [`figures/`](figures/) directory. The documentation assets included with this README use the following structure:
 
 ```text
 README.md
@@ -160,12 +160,12 @@ The taxonomies comprise **21 domain-specific narratives** (11 URW and 10 CC). An
 
 #### A.3. Annotation and curation protocol
 
-1. **Document-level narrative:** Annotators reviewed the article and its pre-existing paragraph-level narrative labels, choosing the single label that best represents the *entire document*. The most common paragraph-level label need not be the dominant narrative.
+1. **Document-level narrative:** Annotators reviewed the article and its pre-existing paragraph-level narrative labels, choosing the single label that best represents the *entire document*. The most common paragraph-level label may not be the dominant narrative.
 2. **Evidence spans:** Annotators selected all text spans justifying that narrative. Neither span length nor the number of spans per document was restricted.
 3. **Expert curation:** Language coordinators and expert curators harmonized annotations and reviewed discrepancies, including differing or overlapping evidence spans. The final resource contains curated annotations.
 4. **Excluded class:** Following curation, documents whose dominant narrative was **Other** were excluded.
 
-Each language was annotated by a dedicated team of **3–6 annotators**, with a coordinator and expert curation. Inherent interpretation differences are important to consider when using the annotations.
+Each language was annotated by a dedicated team of **3–6 annotators**, with a coordinator and expert curation. Inherent interpretation differences are important to consider when using the annotations. The curated dataset and raw annotations are available upon request.
 
 ### B. Annotation agreement
 
@@ -177,11 +177,11 @@ Krippendorff's alpha (α) measures inter-annotator agreement on the dominant nar
 | --- | ---: | ---: | ---: | ---: |
 | **Krippendorff's α** | **0.736** | **0.471** | **0.611** | **0.416** |
 
-Figure 4 from the ARR manuscript visualizes where two annotators selected the same narrative (diagonal) and where their labels differed (off-diagonal). The heatmap includes the **Other** category used during annotation; this category is excluded from the final PolyEvidence dataset.
+The Figure below shows where two annotators selected the same narrative (diagonal) and where their labels differed (off-diagonal). The heatmap includes the **Other** category used during annotation; this category is excluded from the final PolyEvidence dataset.
 
 ![Document-level dominant narrative annotation agreement matrix](figures/dominant_narrative_agreement_heatmap.png)
 
-*Figure 4. Agreement matrix for document-level dominant narrative annotations.*
+*Figure. Agreement matrix for document-level dominant narrative annotations.*
 
 Outside the frequent **Other** category, the clearest agreements concern **Discrediting Ukraine**, **Amplifying Climate Fears**, and **Discrediting the West, Diplomacy**. Confusions occur between semantically close labels, notably **Blaming the war on others rather than the invader**, **Discrediting Ukraine**, and **Russia is the Victim**. These overlaps illustrate the importance of expert curation.
 
@@ -191,14 +191,14 @@ Evidence agreement is calculated **only for article pairs for which annotators c
 
 ![Evidence-span annotation agreement across overlap thresholds](figures/evidence_span_agreement.png)
 
-*Figure 3. F1 agreement of evidence spans by language and topic across overlap thresholds.*
+*Figure. F1 agreement of evidence spans by language and topic across overlap thresholds.*
 
 The results are generally low. In the most permissive setting, the highest F1 is **0.44** (approximately **0.443** with unrounded values), for **Portuguese URW**. English, Portuguese, and Russian generally show higher agreement than Bulgarian. Differences in the **number of spans** each annotator selected also contributed to disagreements: **19 documents** had a difference of more than five spans, whereas only **46** had the same number of spans annotated by both annotators.
 
 <details>
 <summary><strong>Table 5 — Full evidence annotation agreement by language, topic, and overlap threshold</strong></summary>
 
-The table reproduces the values reported in the ARR appendix. P = precision; R = recall.
+The table presents the values reported by language, topic and overlap. P = precision; R = recall.
 
 | Language | Topic | Overlap threshold | Precision | Recall | F1 |
 | :--- | :--- | ---: | ---: | ---: | ---: |
@@ -253,7 +253,7 @@ The generative baseline uses **Gemini 2.5 Flash-Lite**. For evidence extraction,
 
 #### C.1. Narrative-aware evidence extraction prompt
 
-The following is the instruction text reproduced from the ARR appendix. The manuscript does not include the complete serialized LangExtract request or the retrieved few-shot example; accordingly, this text should be read as the **reported instruction**, not a standalone executable request.
+The following is the instruction text passed to the LangExtract library. 
 
 ```text
 Extract all text spans that support and justify the selected dominant narrative:
@@ -292,7 +292,7 @@ Available categories: {narratives_list}
 
 ### D. mBERT fine-tuning details
 
-Both mBERT baselines are fine-tuned from `bert-base-multilingual-cased` using the following hyperparameters, as reported in Appendix D:
+Both mBERT baselines are fine-tuned from `bert-base-multilingual-cased` using the following hyperparameters:
 
 | Setting | Value |
 | --- | --- |
@@ -314,7 +314,7 @@ $$
 
 ### E. Relaxed evaluation results
 
-The appendix reports **precision (P), recall (R), and F1** at minimum overlap thresholds **0.5–1.0**. A threshold of **1.0** denotes exact span matching. For readability, each model's three scores are grouped as **P / R / F1**, preserving every numerical result from the ARR tables.
+The following section reports **precision (P), recall (R), and F1** at minimum overlap thresholds **0.5–1.0**. A threshold of **1.0** denotes exact span matching. For readability, each model's three scores are grouped as **P / R / F1**.
 
 #### E.1. Narrative-Aware Evidence Extraction (Task 1)
 
@@ -360,7 +360,7 @@ In Task 1, the gold document-level dominant narrative is provided as an input an
 
 #### E.2. Joint Narrative–Evidence Extraction (Task 2)
 
-In Task 2, the model predicts the document-level narrative and supporting evidence. The results below are for the **evidence-extraction component**; narrative classification is a categorical prediction, not a span-overlap task.
+In Task 2, the model predicts the document-level narrative and supporting evidence. The results below are for the **evidence-extraction component**.
 
 <details>
 <summary><strong>Table 7 — Full Task 2 evidence results by language and overlap threshold</strong></summary>
